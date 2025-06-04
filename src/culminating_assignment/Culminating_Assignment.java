@@ -6,7 +6,7 @@ package culminating_assignment;
 
 /**
  *
- * @author 348736794
+ * @author Zi Cheng Qiu
  */
 public class Culminating_Assignment {
 
