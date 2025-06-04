@@ -5,7 +5,7 @@
 package culminating_assignment;
 
 /**
- *
+ *  I will 
  * @author Zi Cheng Qiu
  */
 public class Culminating_Assignment {
@@ -14,7 +14,7 @@ public class Culminating_Assignment {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Sketch.main("culminating_assignment.Sketch");
     }
     
 }
