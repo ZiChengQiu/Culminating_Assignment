@@ -22,8 +22,19 @@ public class Mountain {
         this.y = y;
         this.health = health;
         this.image = app.loadImage(imagePath);
-        this.image.resize(200, 200);
+        this.image.resize(image.width / 3, image.height / 3);
     }
     
+    public void draw(){
+        app.image(image, x, y);
+    }
     
+    public boolean isClicked(int mouseX, int mouseY){
+        int centerX = x + (image.width / 2);
+        int centerY = y + (image.height / 2);
+        float d = PApplet.dist(mouseX, mouseY, centerX, centerY);
+        return 
+    }
+    
+    public int health
 }

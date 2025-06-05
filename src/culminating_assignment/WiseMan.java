@@ -15,7 +15,7 @@ public class WiseMan {
     private PApplet app;
     private PImage image;
     
-    public WiseMan(PApplet p, int x, int y, int speed, String imagePath){
+    public WiseMan(PApplet p, int x, int y, String imagePath){
         this.app = p;
         this.x = x;
         this.y = y;

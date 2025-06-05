@@ -16,11 +16,10 @@ public class Yugong {
     private PApplet app;
     private PImage image;
     
-    public Yugong(PApplet p, int x, int y, int speed, String imagePath){
+    public Yugong(PApplet p, int x, int y, String imagePath){
         this.app = p;
         this.x = x;
         this.y = y;
-        this.speed = speed;
         this.image = app.loadImage(imagePath);
         this.image.resize(image.width / 5, image.height / 5);
     }

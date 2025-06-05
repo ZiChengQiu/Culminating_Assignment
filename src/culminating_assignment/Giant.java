@@ -15,7 +15,7 @@ public class Giant {
     private PApplet app;
     private PImage image;
     
-    public Giant(PApplet p, int x, int y, int speed, String imagePath){
+    public Giant(PApplet p, int x, int y, String imagePath){
         this.app = p;
         this.x = x;
         this.y = y;
