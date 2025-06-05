@@ -9,36 +9,21 @@ import processing.core.PImage;
  *
  * @author Zi Cheng Qiu
  */
-public class Yugong {
-    public int x;
-    public int y;
-    private int speed;
+public class Mountain {
+    private int x;
+    private int y;
+    private int health;
     private PApplet app;
     private PImage image;
     
-    public Yugong(PApplet p, int x, int y, int speed, String imagePath){
+    public Mountain(PApplet p, int x, int y, String imagePath, int health){
         this.app = p;
         this.x = x;
         this.y = y;
-        this.speed = speed;
+        this.health = health;
         this.image = app.loadImage(imagePath);
-        this.image.resize(image.width / 5, image.height / 5);
+        this.image.resize(200, 200);
     }
     
-    public void move(int dx, int dy){
-        x += dx;
-        y += dy;
-    }
     
-    public void draw(){
-        app.image(image, x, y);
-    }
-    
-    public int getX(){
-        return x;
-    }
-    
-    public int getY(){
-        return y;
-    }
 }
