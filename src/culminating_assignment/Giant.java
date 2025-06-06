@@ -10,8 +10,8 @@ import processing.core.PImage;
  * @author Zi Cheng Qiu
  */
 public class Giant {
-    private int x;
-    private int y;
+    public int x;
+    public int y;
     private PApplet app;
     private PImage image;
     
@@ -20,10 +20,14 @@ public class Giant {
         this.x = x;
         this.y = y;
         this.image = app.loadImage(imagePath);
-        this.image.resize(image.width / 5, image.height / 5);
+        this.image.resize(image.width / 2, image.height / 2);
     }
     
     public void draw(){
         app.image(image, x, y);
+    }
+    
+    public void moveUp(){
+        y -= 1;
     }
 }

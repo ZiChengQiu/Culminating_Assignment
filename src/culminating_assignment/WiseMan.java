@@ -10,8 +10,8 @@ import processing.core.PImage;
  * @author Zi Cheng Qiu
  */
 public class WiseMan {
-    private int x;
-    private int y;
+    public int x;
+    public int y;
     private PApplet app;
     private PImage image;
     
