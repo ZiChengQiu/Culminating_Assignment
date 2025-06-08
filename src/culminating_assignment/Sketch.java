@@ -65,7 +65,7 @@ public class Sketch extends PApplet{
             giant2.draw();
             fill(255, 0, 0);
             textSize(30);
-            text("Lord of Heaven is moved. Giants are here to help!", 180, 100);
+            text("Lord of Heaven is moved. Giants are here to help!", 180, 110);
             if(startMoving){
                 giant1.moveUp();
                 giant2.moveUp();
