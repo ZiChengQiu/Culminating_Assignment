@@ -29,21 +29,24 @@ public class Mountain {
         app.image(image, x, y);
     }
     
-    public void move(int dx, int dy){
-        x += dx;
-        y += dy;
-    }
-    
     public boolean isClicked(int mouseX, int mouseY){
         int centerX = x + (image.width / 2);
         int centerY = y + (image.height / 2);
         float d = PApplet.dist(mouseX, mouseY, centerX, centerY);
-        return 
+        return d < 250;
     }
     
     public void moveUp(){
         y -= 1;
     }
     
-    public int health
+    public void dig(){
+        if(health > 0){
+            health--;
+        }
+    }
+    
+    public int getHealth(){
+        return health;
+    }
 }

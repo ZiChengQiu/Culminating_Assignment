@@ -16,8 +16,6 @@ public class Background {
     public Background(PApplet p, String imagePath){
         this.app = p;
         this.image = app.loadImage(imagePath);
-        this.image.resize(938, 536);
-
     }
     
     public void draw(){

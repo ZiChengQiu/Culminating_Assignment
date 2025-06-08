@@ -17,15 +17,12 @@ public class Sketch extends PApplet{
     private Mountain mountain2;
     private Giant giant1;
     private Giant giant2;
-    
     private boolean showVillager = false;
     private boolean showWiseMan = false;
     private boolean showGiants = false;
     private boolean startMoving = false;
-    int stage = 0;
-    private String [][] dig;
-    private static int click;
-    
+    private String [][] mountainDigProgress;
+    private static int click = 0;
     
     public void settings(){
         size(938, 536);
@@ -34,13 +31,13 @@ public class Sketch extends PApplet{
     public void setup(){
         background = new Background(this, "images/background.png");
         yuGong = new Yugong(this, 100, 270, "images/yugong.png");
-        wiseMan = new WiseMan(this, 700, 250, "images/wiseMan.png");
-        villager = new Villagers(this, 150, 280, "images/villager.png");
+        wiseMan = new WiseMan(this, 700, 300, "images/wiseMan.png");
+        villager = new Villagers(this, 130, 250, "images/villager.png");
         mountain1 = new Mountain(this, 200, 100, "images/mountain1.png", 15);
         mountain2 = new Mountain(this, 600, 100, "images/mountain2.png", 10);
-        giant1 = new Giant(this, 200, 0, "images/giant1.png");
-        giant2 = new Giant(this, 600, 0, "images/giant2.png");
-        
+        giant1 = new Giant(this, 130, 300, "images/giant1.png");
+        giant2 = new Giant(this, 500, 300, "images/giant2.png");
+        mountainDigProgress = new String [2][15];
     }
     
     public void draw(){
@@ -51,18 +48,24 @@ public class Sketch extends PApplet{
         
         if(showVillager){
             villager.draw();
+            fill(255);
+            textSize(15);
             text("We will help you!", villager.x, villager.y - 20);
         }
         
         if(showWiseMan){
             wiseMan.draw();
-            text("You are foolish. You can't do this!", wiseMan.x, wiseMan.y - 20);
+            fill(255);
+            textSize(15);
+            text("You are foolish. You can't do this!", wiseMan.x, wiseMan.y - 5);
         }
         
         if(showGiants){
             giant1.draw();
             giant2.draw();
-            text("Lord of Heaven is moved. Giants are here to help!", 200, 100);
+            fill(255, 0, 0);
+            textSize(30);
+            text("Lord of Heaven is moved. Giants are here to help!", 180, 100);
             if(startMoving){
                 giant1.moveUp();
                 giant2.moveUp();
@@ -70,25 +73,60 @@ public class Sketch extends PApplet{
                 mountain2.moveUp();
             }
         }
-        if(keyPressed){
-            if(keyCode == LEFT){
-                yuGong.move(-2, 0);
-            }else if(keyCode == RIGHT){
-                yuGong.move(2, 0);
-            }else if(keyCode == UP){
-                yuGong.move(0, -2);
-            }else if(keyCode == DOWN){
-                yuGong.move(0, 2);
-            }
-        }
-        if(stage == 0){
-            
+        
+        fill(0);
+        textSize(15);
+        text("Yugong: I want to move these mountains!", 20, 30);
+        displayMountainHealth();
+        
+        if(mountain1.getHealth() <= 10){
+            showVillager = true;
         }
         
+        if(mountain2.getHealth() <= 5){
+            showWiseMan = true;
+        }
+        
+        if(mountain1.getHealth() == 0 && mountain2.getHealth() == 0){
+            showGiants = true;
+            startMoving = true;
+        }
+    }
+    
+    public void keyPressed(){
+        if(keyCode == LEFT){
+            yuGong.move(-5, 0);
+        }else if(keyCode == RIGHT){
+            yuGong.move(5, 0);
+        }else if(keyCode == UP){
+            yuGong.move(0, -5);
+        }else if(keyCode == DOWN){
+            yuGong.move(0, 5);
+        }
     }
     
     public void mousePressed(){
-        
+        if(mountain1.isClicked(mouseX, mouseY)){
+            mountain1.dig();
+            click++;
+            updateProgress(0, mountain1.getHealth());
+        }else if(mountain2.isClicked(mouseX, mouseY)){
+            mountain2.dig();
+            click++;
+            updateProgress(1, mountain2.getHealth());
+        }
     }
     
+    public void displayMountainHealth(){
+        fill(34, 255, 0);
+        textSize(20);
+        text("Mountain 1 Health: " + mountain1.getHealth(), 20, 60);
+        text("Mountain 2 Health: " + mountain2.getHealth(), 20, 85);
+    }
+    
+    public void updateProgress(int mountainIndex, int health){
+        if(health >= 0 && health < 15){
+            mountainDigProgress[mountainIndex][health] = "...";
+        }
+    }
 }

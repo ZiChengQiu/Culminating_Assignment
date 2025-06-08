@@ -20,7 +20,7 @@ public class Villagers {
         this.x = x;
         this.y = y;
         this.image = app.loadImage(imagePath);
-        this.image.resize(image.width / 5, image.height / 5);
+        this.image.resize(image.width / 3, image.height / 3);
     }
     
     public void draw(){

@@ -20,7 +20,6 @@ public class Giant {
         this.x = x;
         this.y = y;
         this.image = app.loadImage(imagePath);
-        this.image.resize(image.width / 2, image.height / 2);
     }
     
     public void draw(){
