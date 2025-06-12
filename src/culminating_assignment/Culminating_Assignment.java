@@ -5,7 +5,7 @@
 package culminating_assignment;
 
 /**
- * 
+ * Start the Program
  * @author Zi Cheng Qiu
  */
 public class Culminating_Assignment {

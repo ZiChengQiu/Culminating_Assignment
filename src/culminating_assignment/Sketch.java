@@ -4,8 +4,10 @@
  */
 package culminating_assignment;
 import processing.core.PApplet;
+import java.io.*;
+import java.util.Scanner;
 /**
- *
+ * 
  * @author Zi Cheng Qiu
  */
 public class Sketch extends PApplet{
@@ -37,7 +39,8 @@ public class Sketch extends PApplet{
         mountain2 = new Mountain(this, 600, 100, "images/mountain2.png", 10);
         giant1 = new Giant(this, 130, 300, "images/giant1.png");
         giant2 = new Giant(this, 500, 300, "images/giant2.png");
-        mountainDigProgress = new String [2][15];
+        mountainDigProgress = new String[2][15];
+        loadProgress();
     }
     
     public void draw(){
@@ -79,6 +82,14 @@ public class Sketch extends PApplet{
         text("Yugong: I want to move these mountains!", 20, 30);
         displayMountainHealth();
         
+        for(int i = 0; i < mountainDigProgress.length; i++){
+            for(int j = 0; j < mountainDigProgress[i].length; j++){
+                if(mountainDigProgress[i][j] != null){
+                    text("Mountain " + (i + 1) + " Health: " + j + mountainDigProgress[i][j], 400, 200 + i * 100 + j);
+                }
+            }
+        }
+        
         if(mountain1.getHealth() <= 10){
             showVillager = true;
         }
@@ -110,10 +121,12 @@ public class Sketch extends PApplet{
             mountain1.dig();
             click++;
             updateProgress(0, mountain1.getHealth());
+            saveProgress();
         }else if(mountain2.isClicked(mouseX, mouseY)){
             mountain2.dig();
             click++;
             updateProgress(1, mountain2.getHealth());
+            saveProgress();
         }
     }
     
@@ -126,7 +139,39 @@ public class Sketch extends PApplet{
     
     public void updateProgress(int mountainIndex, int health){
         if(health >= 0 && health < 15){
-            mountainDigProgress[mountainIndex][health] = "...";
+            mountainDigProgress[mountainIndex][health] = "";
+        }
+    }
+    
+    public void saveProgress(){
+        try{
+             FileWriter writer = new FileWriter("progress.txt", true);
+             PrintWriter niceOutput = new PrintWriter(writer);
+             niceOutput.println(click);
+             niceOutput.println(mountain1.getHealth());
+             niceOutput.println(mountain2.getHealth());
+             niceOutput.close();
+        }catch(IOException ioException){
+            System.err.println(ioException);
+        }
+    }
+    
+    public void loadProgress(){
+        try{
+            File file = new File("progress.txt");
+            if(!file.exists()){
+                PrintWriter writer = new PrintWriter(file);
+                writer.println("0");
+                writer.println("15");
+                writer.println("10");
+                writer.close();
+            }
+            Scanner scanner = new Scanner(new File("progress.txt"));
+            click = Integer.parseInt(scanner.nextLine());
+            mountain1.setHealth(Integer.parseInt(scanner.nextLine()));
+            mountain2.setHealth(Integer.parseInt(scanner.nextLine()));
+        }catch(IOException ioException){
+            System.err.println(ioException);
         }
     }
 }

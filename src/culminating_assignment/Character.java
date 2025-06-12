@@ -9,22 +9,26 @@ import processing.core.PImage;
  *
  * @author Zi Cheng Qiu
  */
-public class Yugong extends Character{
+public class Character {
     public int x;
     public int y;
-    private int speed;
     private PApplet app;
     private PImage image;
     
-    public Yugong(PApplet p, int x, int y, String imagePath){
-        super(p, x, y, imagePath);
-    }
-    
-    public void move(int dx, int dy){
-        super.move(dx, dy);
+    public Character(PApplet p, int x, int y, String imagePath){
+        this.app = p;
+        this.x = x;
+        this.y = y;
+        this.image = app.loadImage(imagePath);
+        this.image.resize(image.width / 5, image.height / 5);
     }
     
     public void draw(){
-        super.draw();
+        app.image(image, x, y);
+    }
+    
+    public void move(int dx, int dy){
+        x += dx;
+        y += dy;
     }
 }

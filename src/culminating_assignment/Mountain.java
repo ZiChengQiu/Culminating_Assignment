@@ -16,6 +16,15 @@ public class Mountain {
     private PApplet app;
     private PImage image;
     
+    public Mountain(PApplet p, int x, int y, String imagePath){
+        this.app = p;
+        this.x = x;
+        this.y = y;
+        this.health = 50;
+        this.image = app.loadImage(imagePath);
+        this.image.resize(image.width / 2, image.height / 2);
+    }
+    
     public Mountain(PApplet p, int x, int y, String imagePath, int health){
         this.app = p;
         this.x = x;
@@ -48,5 +57,9 @@ public class Mountain {
     
     public int getHealth(){
         return health;
+    }
+    
+    public void setHealth(int h){
+        health = h;
     }
 }
