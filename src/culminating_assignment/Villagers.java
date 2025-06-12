@@ -15,6 +15,13 @@ public class Villagers {
     private PApplet app;
     private PImage image;
     
+    /**
+     * 
+     * @param p
+     * @param x
+     * @param y
+     * @param imagePath 
+     */
     public Villagers(PApplet p, int x, int y, String imagePath){
         this.app = p;
         this.x = x;
@@ -23,6 +30,9 @@ public class Villagers {
         this.image.resize(image.width / 3, image.height / 3);
     }
     
+    /**
+     * 
+     */
     public void draw(){
         app.image(image, x, y);
     }

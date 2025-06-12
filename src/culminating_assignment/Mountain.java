@@ -16,6 +16,13 @@ public class Mountain {
     private PApplet app;
     private PImage image;
     
+    /**
+     * 
+     * @param p
+     * @param x
+     * @param y
+     * @param imagePath 
+     */
     public Mountain(PApplet p, int x, int y, String imagePath){
         this.app = p;
         this.x = x;
@@ -25,6 +32,14 @@ public class Mountain {
         this.image.resize(image.width / 2, image.height / 2);
     }
     
+    /**
+     * 
+     * @param p
+     * @param x
+     * @param y
+     * @param imagePath
+     * @param health 
+     */
     public Mountain(PApplet p, int x, int y, String imagePath, int health){
         this.app = p;
         this.x = x;
@@ -34,10 +49,19 @@ public class Mountain {
         this.image.resize(image.width / 2, image.height / 2);
     }
     
+    /**
+     * 
+     */
     public void draw(){
         app.image(image, x, y);
     }
     
+    /**
+     * 
+     * @param mouseX
+     * @param mouseY
+     * @return 
+     */
     public boolean isClicked(int mouseX, int mouseY){
         int centerX = x + (image.width / 2);
         int centerY = y + (image.height / 2);
@@ -45,20 +69,34 @@ public class Mountain {
         return d < 250;
     }
     
+    /**
+     * 
+     */
     public void moveUp(){
         y -= 1;
     }
     
+    /**
+     * 
+     */
     public void dig(){
         if(health > 0){
             health--;
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     public int getHealth(){
         return health;
     }
     
+    /**
+     * 
+     * @param h 
+     */
     public void setHealth(int h){
         health = h;
     }

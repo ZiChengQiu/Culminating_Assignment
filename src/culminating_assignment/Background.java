@@ -13,11 +13,19 @@ public class Background {
     private PImage image;
     private PApplet app;
     
+    /**
+     * 
+     * @param p
+     * @param imagePath 
+     */
     public Background(PApplet p, String imagePath){
         this.app = p;
         this.image = app.loadImage(imagePath);
     }
     
+    /**
+     * 
+     */
     public void draw(){
         app.image(image, 0, 0);
     }

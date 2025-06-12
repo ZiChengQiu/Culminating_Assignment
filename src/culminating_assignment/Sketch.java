@@ -7,7 +7,7 @@ import processing.core.PApplet;
 import java.io.*;
 import java.util.Scanner;
 /**
- * 
+ * Main code that run the program
  * @author Zi Cheng Qiu
  */
 public class Sketch extends PApplet{
@@ -26,10 +26,18 @@ public class Sketch extends PApplet{
     private String [][] mountainDigProgress;
     private static int click = 0;
     
+    /**
+     * This method set the size
+     */
+    @Override
     public void settings(){
         size(938, 536);
     }
     
+    /**
+     *
+     */
+    @Override
     public void setup(){
         background = new Background(this, "images/background.png");
         yuGong = new Yugong(this, 100, 270, "images/yugong.png");
@@ -43,6 +51,10 @@ public class Sketch extends PApplet{
         loadProgress();
     }
     
+    /**
+     * 
+     */
+    @Override
     public void draw(){
         background.draw();
         mountain1.draw();
@@ -104,6 +116,10 @@ public class Sketch extends PApplet{
         }
     }
     
+    /**
+     * 
+     */
+    @Override
     public void keyPressed(){
         if(keyCode == LEFT){
             yuGong.move(-5, 0);
@@ -116,6 +132,10 @@ public class Sketch extends PApplet{
         }
     }
     
+    /**
+     * 
+     */
+    @Override
     public void mousePressed(){
         if(mountain1.isClicked(mouseX, mouseY)){
             mountain1.dig();
@@ -130,6 +150,9 @@ public class Sketch extends PApplet{
         }
     }
     
+    /**
+     * 
+     */
     public void displayMountainHealth(){
         fill(34, 255, 0);
         textSize(20);
@@ -137,12 +160,20 @@ public class Sketch extends PApplet{
         text("Mountain 2 Health: " + mountain2.getHealth(), 20, 85);
     }
     
+    /**
+     * 
+     * @param mountainIndex
+     * @param health 
+     */
     public void updateProgress(int mountainIndex, int health){
         if(health >= 0 && health < 15){
             mountainDigProgress[mountainIndex][health] = "";
         }
     }
     
+    /**
+     * 
+     */
     public void saveProgress(){
         try{
              FileWriter writer = new FileWriter("progress.txt", true);
@@ -156,6 +187,9 @@ public class Sketch extends PApplet{
         }
     }
     
+    /**
+     * 
+     */
     public void loadProgress(){
         try{
             File file = new File("progress.txt");

@@ -16,14 +16,29 @@ public class Yugong extends Character{
     private PApplet app;
     private PImage image;
     
+    /**
+     * 
+     * @param p
+     * @param x
+     * @param y
+     * @param imagePath 
+     */
     public Yugong(PApplet p, int x, int y, String imagePath){
         super(p, x, y, imagePath);
     }
     
+    /**
+     * 
+     * @param dx
+     * @param dy 
+     */
     public void move(int dx, int dy){
         super.move(dx, dy);
     }
     
+    /**
+     * 
+     */
     public void draw(){
         super.draw();
     }

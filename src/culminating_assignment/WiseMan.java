@@ -15,6 +15,13 @@ public class WiseMan {
     private PApplet app;
     private PImage image;
     
+    /**
+     * 
+     * @param p
+     * @param x
+     * @param y
+     * @param imagePath 
+     */
     public WiseMan(PApplet p, int x, int y, String imagePath){
         this.app = p;
         this.x = x;
@@ -23,6 +30,9 @@ public class WiseMan {
         this.image.resize(image.width / 5, image.height / 5);
     }
     
+    /**
+     * 
+     */
     public void draw(){
         app.image(image, x, y);
     }

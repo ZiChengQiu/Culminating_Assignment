@@ -15,6 +15,13 @@ public class Character {
     private PApplet app;
     private PImage image;
     
+    /**
+     * 
+     * @param p
+     * @param x
+     * @param y
+     * @param imagePath 
+     */
     public Character(PApplet p, int x, int y, String imagePath){
         this.app = p;
         this.x = x;
@@ -23,10 +30,18 @@ public class Character {
         this.image.resize(image.width / 5, image.height / 5);
     }
     
+    /**
+     * 
+     */
     public void draw(){
         app.image(image, x, y);
     }
     
+    /**
+     * 
+     * @param dx
+     * @param dy 
+     */
     public void move(int dx, int dy){
         x += dx;
         y += dy;

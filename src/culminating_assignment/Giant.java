@@ -15,6 +15,13 @@ public class Giant {
     private PApplet app;
     private PImage image;
     
+    /**
+     * 
+     * @param p
+     * @param x
+     * @param y
+     * @param imagePath 
+     */
     public Giant(PApplet p, int x, int y, String imagePath){
         this.app = p;
         this.x = x;
@@ -22,10 +29,16 @@ public class Giant {
         this.image = app.loadImage(imagePath);
     }
     
+    /**
+     * 
+     */
     public void draw(){
         app.image(image, x, y);
     }
     
+    /**
+     * 
+     */
     public void moveUp(){
         y -= 1;
     }
