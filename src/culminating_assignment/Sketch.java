@@ -6,6 +6,7 @@ package culminating_assignment;
 import processing.core.PApplet;
 import java.io.*;
 import java.util.Scanner;
+
 /**
  * Main code that run the program
  * @author Zi Cheng Qiu
@@ -27,7 +28,7 @@ public class Sketch extends PApplet{
     private static int click = 0;
     
     /**
-     * This method set the size
+     * set the size of the game screen
      */
     @Override
     public void settings(){
@@ -35,7 +36,7 @@ public class Sketch extends PApplet{
     }
     
     /**
-     *
+     * 
      */
     @Override
     public void setup(){
@@ -117,7 +118,7 @@ public class Sketch extends PApplet{
     }
     
     /**
-     * 
+     * control YuGong movement
      */
     @Override
     public void keyPressed(){
@@ -192,14 +193,14 @@ public class Sketch extends PApplet{
      */
     public void loadProgress(){
         try{
-            File file = new File("progress.txt");
-            if(!file.exists()){
-                PrintWriter writer = new PrintWriter(file);
-                writer.println("0");
-                writer.println("15");
-                writer.println("10");
-                writer.close();
-            }
+            FileWriter writer = new FileWriter("progress.txt", true);
+            PrintWriter niceOutput = new PrintWriter(writer);
+            niceOutput.println("0");
+            niceOutput.println("15");
+            niceOutput.println("10");
+            niceOutput.close();
+            
+            //This file output code is useless
             Scanner scanner = new Scanner(new File("progress.txt"));
             click = Integer.parseInt(scanner.nextLine());
             mountain1.setHealth(Integer.parseInt(scanner.nextLine()));
