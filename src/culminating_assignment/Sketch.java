@@ -138,7 +138,7 @@ public class Sketch extends PApplet{
             showWiseMan = true;
         }
         
-        // when both mountains' health is 0, giants come out and all giants and mountains start to move up
+        // when both mountain's health is 0, giants come out and all giants and mountains start to move up
         if(mountain1.getHealth() == 0 && mountain2.getHealth() == 0){
             showGiants = true;
             startMoving = true;
