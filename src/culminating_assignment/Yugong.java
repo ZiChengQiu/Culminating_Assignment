@@ -12,7 +12,6 @@ import processing.core.PImage;
 public class Yugong extends Character{
     public int x;
     public int y;
-    private int speed;
     private PApplet app;
     private PImage image;
     
