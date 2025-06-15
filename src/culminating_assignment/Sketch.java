@@ -196,7 +196,7 @@ public class Sketch extends PApplet{
      */
     public void updateProgress(int mountainIndex, int health){
         if(health >= 0 && health < mountainDigProgress[mountainIndex].length){
-            mountainDigProgress[mountainIndex][health] = "Dug";
+            mountainDigProgress[mountainIndex][health] = "";
         }
     }
     
