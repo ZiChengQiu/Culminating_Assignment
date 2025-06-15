@@ -6,7 +6,7 @@ package culminating_assignment;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
- *
+ * The wise man who mocks Yugong
  * @author Zi Cheng Qiu
  */
 public class WiseMan {
@@ -16,7 +16,7 @@ public class WiseMan {
     private PImage image;
     
     /**
-     * 
+     * Constructor
      * @param p
      * @param x
      * @param y
@@ -31,7 +31,7 @@ public class WiseMan {
     }
     
     /**
-     * 
+     * Draw the wise man
      */
     public void draw(){
         app.image(image, x, y);

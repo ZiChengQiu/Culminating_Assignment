@@ -6,7 +6,7 @@ package culminating_assignment;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
- *
+ * Handle drawing the background image
  * @author Zi Cheng Qiu
  */
 public class Background {
@@ -14,7 +14,7 @@ public class Background {
     private PApplet app;
     
     /**
-     * 
+     * Constructor
      * @param p
      * @param imagePath 
      */
@@ -24,7 +24,7 @@ public class Background {
     }
     
     /**
-     * 
+     * Draw the background at (0, 0)
      */
     public void draw(){
         app.image(image, 0, 0);

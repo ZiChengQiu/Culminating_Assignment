@@ -6,7 +6,7 @@ package culminating_assignment;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
- *
+ * Giants who help move the mountains
  * @author Zi Cheng Qiu
  */
 public class Giant {
@@ -16,7 +16,7 @@ public class Giant {
     private PImage image;
     
     /**
-     * 
+     * Constructor
      * @param p
      * @param x
      * @param y
@@ -30,14 +30,14 @@ public class Giant {
     }
     
     /**
-     * 
+     * Draw the giant
      */
     public void draw(){
         app.image(image, x, y);
     }
     
     /**
-     * 
+     * Move the giant upward
      */
     public void moveUp(){
         y -= 1;

@@ -6,7 +6,7 @@ package culminating_assignment;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
- *
+ * The main character Yugong
  * @author Zi Cheng Qiu
  */
 public class Yugong extends Character{
@@ -17,29 +17,34 @@ public class Yugong extends Character{
     private PImage image;
     
     /**
-     * 
+     * Constructor
      * @param p
      * @param x
      * @param y
      * @param imagePath 
      */
     public Yugong(PApplet p, int x, int y, String imagePath){
+        // call parent class
         super(p, x, y, imagePath);
     }
     
     /**
-     * 
+     * Move Yugong
      * @param dx
      * @param dy 
      */
+    @Override
     public void move(int dx, int dy){
+        // call parent class
         super.move(dx, dy);
     }
     
     /**
-     * 
+     * Draw Yugong
      */
+    @Override
     public void draw(){
+        // call parent class
         super.draw();
     }
 }

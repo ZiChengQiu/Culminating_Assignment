@@ -6,7 +6,7 @@ package culminating_assignment;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
- *
+ * Base class for Yugong
  * @author Zi Cheng Qiu
  */
 public class Character {
@@ -16,7 +16,7 @@ public class Character {
     private PImage image;
     
     /**
-     * 
+     * Constructor
      * @param p
      * @param x
      * @param y
@@ -27,18 +27,19 @@ public class Character {
         this.x = x;
         this.y = y;
         this.image = app.loadImage(imagePath);
+        // make the image smaller
         this.image.resize(image.width / 5, image.height / 5);
     }
     
     /**
-     * 
+     * Draw the character
      */
     public void draw(){
         app.image(image, x, y);
     }
     
     /**
-     * 
+     * Move the character
      * @param dx
      * @param dy 
      */

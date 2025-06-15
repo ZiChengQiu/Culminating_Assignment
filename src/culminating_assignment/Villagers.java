@@ -6,7 +6,7 @@ package culminating_assignment;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
- *
+ * Villagers who help Yugong
  * @author Zi Cheng Qiu
  */
 public class Villagers {
@@ -16,7 +16,7 @@ public class Villagers {
     private PImage image;
     
     /**
-     * 
+     * Constructor
      * @param p
      * @param x
      * @param y
@@ -27,11 +27,12 @@ public class Villagers {
         this.x = x;
         this.y = y;
         this.image = app.loadImage(imagePath);
+        // resize the image
         this.image.resize(image.width / 3, image.height / 3);
     }
     
     /**
-     * 
+     * Draw the villager image
      */
     public void draw(){
         app.image(image, x, y);

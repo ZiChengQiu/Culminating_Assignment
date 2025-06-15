@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.Scanner;
 
 /**
- * Main code that run the program
+ * Main codes that run the program
  * @author Zi Cheng Qiu
  */
 public class Sketch extends PApplet{
@@ -24,19 +24,19 @@ public class Sketch extends PApplet{
     private boolean showWiseMan = false;
     private boolean showGiants = false;
     private boolean startMoving = false;
-    private String [][] mountainDigProgress;
-    private static int click = 0;
+    private String [][] mountainDigProgress; // dig progress
+    private static int click = 0; // total number of click the mountains
     
     /**
-     * set the size of the game screen
+     * Set the game screen's size
      */
     @Override
     public void settings(){
-        size(938, 536);
+        size(938, 536); // same size as the background image
     }
     
     /**
-     * 
+     * Initialize all game objects and call the loadProgress method
      */
     @Override
     public void setup(){
@@ -48,41 +48,64 @@ public class Sketch extends PApplet{
         mountain2 = new Mountain(this, 600, 100, "images/mountain2.png", 10);
         giant1 = new Giant(this, 130, 300, "images/giant1.png");
         giant2 = new Giant(this, 500, 300, "images/giant2.png");
+        // initialize 2D array
         mountainDigProgress = new String[2][15];
+        // load the total number of click and the two mountains' health
         loadProgress();
     }
     
     /**
-     * 
+     * Draw background, characters, mountains, and handles interaction 
+     * and events in the story
      */
     @Override
     public void draw(){
+        // draw background
         background.draw();
+        // draw the first mountain
         mountain1.draw();
+        // draw the second mountain
         mountain2.draw();
+        // draw YuGong
         yuGong.draw();
         
+        // show villagers based on the first mountain's health
         if(showVillager){
+            // draw villagers
             villager.draw();
+            // change color
             fill(255);
+            // change size of text
             textSize(15);
+            // that's what the villagers said to YuGong
             text("We will help you!", villager.x, villager.y - 20);
         }
         
+        // show the wise man based on the second mountain's health
         if(showWiseMan){
+            // draw the wise man
             wiseMan.draw();
+            // change color
             fill(255);
+            // change size
             textSize(15);
+            // the wise man said this to YuGong
             text("You are foolish. You can't do this!", wiseMan.x, wiseMan.y - 5);
         }
         
+        // when both mountain's health are 0, show giants and start movement
         if(showGiants){
+            // draw giant one
             giant1.draw();
+            // draw giant two
             giant2.draw();
+            // color
             fill(255, 0, 0);
+            // size
             textSize(30);
             text("Lord of Heaven is moved. Giants are here to help!", 180, 110);
             if(startMoving){
+                // start moving
                 giant1.moveUp();
                 giant2.moveUp();
                 mountain1.moveUp();
@@ -93,8 +116,10 @@ public class Sketch extends PApplet{
         fill(0);
         textSize(15);
         text("Yugong: I want to move these mountains!", 20, 30);
+        // display the mountains' health
         displayMountainHealth();
         
+        // for-loop to show mountain dig progress
         for(int i = 0; i < mountainDigProgress.length; i++){
             for(int j = 0; j < mountainDigProgress[i].length; j++){
                 if(mountainDigProgress[i][j] != null){
@@ -103,14 +128,17 @@ public class Sketch extends PApplet{
             }
         }
         
+        // when mountain 1 health is 10, villagers come out
         if(mountain1.getHealth() <= 10){
             showVillager = true;
         }
         
+        // when mountain 2 health is 5, wise man appear
         if(mountain2.getHealth() <= 5){
             showWiseMan = true;
         }
         
+        // when both mountains' health is 0, giants come out and all giants and mountains start to move up
         if(mountain1.getHealth() == 0 && mountain2.getHealth() == 0){
             showGiants = true;
             startMoving = true;
@@ -118,7 +146,7 @@ public class Sketch extends PApplet{
     }
     
     /**
-     * control YuGong movement
+     * Move Yugong using keyboard
      */
     @Override
     public void keyPressed(){
@@ -134,15 +162,15 @@ public class Sketch extends PApplet{
     }
     
     /**
-     * 
+     * Press mouse to dig mountains
      */
     @Override
     public void mousePressed(){
         if(mountain1.isClicked(mouseX, mouseY)){
-            mountain1.dig();
-            click++;
-            updateProgress(0, mountain1.getHealth());
-            saveProgress();
+            mountain1.dig(); // dig the mountain
+            click++; // total number of click increase
+            updateProgress(0, mountain1.getHealth()); // call updateProgress method
+            saveProgress(); // call saveProgress method
         }else if(mountain2.isClicked(mouseX, mouseY)){
             mountain2.dig();
             click++;
@@ -152,7 +180,7 @@ public class Sketch extends PApplet{
     }
     
     /**
-     * 
+     * Display the health of both mountains
      */
     public void displayMountainHealth(){
         fill(34, 255, 0);
@@ -162,34 +190,35 @@ public class Sketch extends PApplet{
     }
     
     /**
-     * 
-     * @param mountainIndex
-     * @param health 
+     * Add something to the array
+     * @param mountainIndex this is the mountain index
+     * @param health this is the health
      */
     public void updateProgress(int mountainIndex, int health){
-        if(health >= 0 && health < 15){
-            mountainDigProgress[mountainIndex][health] = "";
+        if(health >= 0 && health < mountainDigProgress[mountainIndex].length){
+            mountainDigProgress[mountainIndex][health] = "Dug";
         }
     }
     
     /**
-     * 
+     * Saves click and health info to file
      */
     public void saveProgress(){
         try{
              FileWriter writer = new FileWriter("progress.txt", true);
              PrintWriter niceOutput = new PrintWriter(writer);
+             // write the information to file
              niceOutput.println(click);
              niceOutput.println(mountain1.getHealth());
              niceOutput.println(mountain2.getHealth());
-             niceOutput.close();
+             niceOutput.close(); // close niceOutput
         }catch(IOException ioException){
             System.err.println(ioException);
         }
     }
     
     /**
-     * 
+     * loads saved click and health info from file
      */
     public void loadProgress(){
         try{
@@ -198,9 +227,8 @@ public class Sketch extends PApplet{
             niceOutput.println("0");
             niceOutput.println("15");
             niceOutput.println("10");
-            niceOutput.close();
+            niceOutput.close(); //close niceOutput
             
-            //This file output code is useless
             Scanner scanner = new Scanner(new File("progress.txt"));
             click = Integer.parseInt(scanner.nextLine());
             mountain1.setHealth(Integer.parseInt(scanner.nextLine()));
